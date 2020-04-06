@@ -99,7 +99,7 @@
         $("#screenshot img").on("load", function() {
           $.ajax({
             type: "POST",
-            url: "/api/faces/register",
+            url: "/api/faces/identify",
             data: $(this).attr("src")
           });
         });

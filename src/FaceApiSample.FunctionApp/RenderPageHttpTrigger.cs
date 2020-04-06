@@ -13,15 +13,27 @@ using Microsoft.Extensions.Logging;
 
 namespace FaceApiSample.FunctionApp
 {
+    /// <summary>
+    /// This represents the HTTP trigger entity to render web page.
+    /// </summary>
     public class RenderPageHttpTrigger
     {
         private readonly ILogger<RenderPageHttpTrigger> _logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RenderPageHttpTrigger"/> class.
+        /// </summary>
+        /// <param name="logger"><see cref="ILogger{RenderPageHttpTrigger}"/> instance.</param>
         public RenderPageHttpTrigger(ILogger<RenderPageHttpTrigger> logger)
         {
             this._logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
+        /// <summary>
+        /// Invokes to render web page.
+        /// </summary>
+        /// <param name="req"><see cref="HttpRequest"/> instance.</param>
+        /// <returns>Returns the <see cref="IActionResult"/> instance.</returns>
         [FunctionName("RenderPageHttpTrigger")]
         public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", Route = "pages/capture")] HttpRequest req,
