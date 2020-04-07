@@ -22,8 +22,15 @@ This provides sample codes for face recognition using [Azure Functions](https://
 
 Setup your [App Settings blade](https://docs.microsoft.com/azure/app-service/configure-common?WT.mc_id=devkimchicom-github-juyoo) on [Azure](https://azure.microsoft.com/features/azure-portal/?WT.mc_id=devkimchicom-github-juyoo), or `local.settings.json` on your local machine.
 
-* `Blob__Container`: The container name of your [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview?WT.mc_id=devkimchicom-github-juyoo)
-* `Blob__PersonGroup`: The person group name of your face photos to be stored
+* `Blob__SasToken`: The SAS token for the blob container so that the Face API can access to the blob images.
+* `Blob__Container`: The container name of your [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview?WT.mc_id=devkimchicom-github-juyoo).
+* `Blob__PersonGroup`: The person group name of your face photos to be stored.
+* `Blob__NumberOfPhotos`: The number of photos to be used for face identification.
+* `Table__Name`: The name of the table storage that stores the face identification history.
+* `Face__AuthKey`: The subscription key for the Face API.
+* `Face__Endpoint`: The endpoint for the Face API.
+* `Face__Confidence`: The confidence level fo the face identification. The maximum value is `1`.
+
 
 ## Contribution ##
 
