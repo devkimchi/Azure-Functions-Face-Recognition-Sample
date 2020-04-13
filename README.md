@@ -7,13 +7,17 @@ This provides sample codes for face recognition using [Azure Functions](https://
 
 * 한국어
   * [[COVID-19 시리즈 #1] 애저 펑션을 이용해서 브라우저에서 애저 Blob 저장소로 스크린샷 이미지 저장하기](https://blog.aliencube.org/ko/2020/04/01/capturing-images-from-browser-to-azure-blob-storage-via-azure-functions/)
+  * [[COVID-19 시리즈 #2] 애저 펑션과 안면 인식 API를 이용해서 본인 인증하기](https://blog.aliencube.org/ko/2020/04/08/identifying-faces-through-azure-functions-using-face-api/)
 * English
   * [[COVID-19 Series #1] Capturing Face Images from Browser to Azure Blob Storage via Azure Functions](https://devkimchi.com/2020/04/01/capturing-images-from-browser-to-azure-blob-storage-via-azure-functions/)
+  * [[COVID-19 Series #2] Identifying Students' Face with Azure Functions and Azure Face API](https://devkimchi.com/2020/04/08/identifying-faces-through-azure-functions-using-face-api/)
 
 
 ## Prerequisites ##
 
 * Webcam
+* [Azure Subscription](https://azure.microsoft.com/pricing/?WT.mc_id=devkimchicom-github-juyoo)
+* [Power Apps Subscription](https://powerapps.microsoft.com/pricing/?WT.mc_id=devkimchicom-github-juyoo)
 
 
 ## Getting Started ##
@@ -24,7 +28,6 @@ Setup your [App Settings blade](https://docs.microsoft.com/azure/app-service/con
 
 * `Blob__SasToken`: The SAS token for the blob container so that the Face API can access to the blob images.
 * `Blob__Container`: The container name of your [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview?WT.mc_id=devkimchicom-github-juyoo).
-* `Blob__PersonGroup`: The person group name of your face photos to be stored.
 * `Blob__NumberOfPhotos`: The number of photos to be used for face identification.
 * `Table__Name`: The name of the table storage that stores the face identification history.
 * `Face__AuthKey`: The subscription key for the Face API.
