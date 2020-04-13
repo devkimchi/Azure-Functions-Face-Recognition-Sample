@@ -2,8 +2,9 @@
   "version": "2.0",
   "logging": {
     "logLevel": {
-      "FaceApiSample.FunctionApp.PhotoCaptureHttpTrigger": "Information",
-      "FaceApiSample.FunctionApp.RenderPageHttpTrigger": "Information"
+      "FaceApiSample.FunctionApp.IdentifyFaceHttpTrigger": "Information",
+      "FaceApiSample.FunctionApp.RenderPageHttpTrigger": "Information",
+      "FaceApiSample.FunctionApp.Models.EmbeddedRequest": "Information"
     },
     "applicationInsights": {
       "samplingSettings": {

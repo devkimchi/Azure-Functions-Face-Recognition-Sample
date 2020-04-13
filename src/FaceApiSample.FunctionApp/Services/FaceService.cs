@@ -138,7 +138,7 @@ namespace FaceApiSample.FunctionApp.Services
                                          .ConfigureAwait(false);
 
                     var filename = blob.Name
-                                       .Replace($"{this._settings.Blob.PersonGroup}/", string.Empty)
+                                       .Replace($"{entity.PersonGroup}/", string.Empty)
                                        .Replace(".png", string.Empty);
                     faceIds.Add(filename);
                 }

@@ -97,10 +97,19 @@
     (function ($) {
       $(document).ready(function() {
         $("#screenshot img").on("load", function() {
+          let payload = {
+            "personGroup": "justinyoo",
+            "image": $(this).attr("src")
+          };
+
           $.ajax({
             type: "POST",
+            headers: {
+              "x-functions-key": "ZkGrB61CzgeGcCT6OaFxeKLrwKkdaFpKcIvHYxR3lWFvRd5uKTnrog=="
+            },
             url: "/api/faces/identify",
-            data: $(this).attr("src")
+            dataType: "json",
+            data: JSON.stringify(payload)
           });
         });
       });

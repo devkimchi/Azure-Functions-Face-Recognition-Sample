@@ -9,7 +9,6 @@ namespace FaceApiSample.FunctionApp.Configs
     {
         private const string SasTokenKey = "Blob__SasToken";
         private const string ContainerNameKey = "Blob__Container";
-        private const string PersonGroupNameKey = "Blob__PersonGroup";
         private const string NumberOfPhotosKey = "Blob__NumberOfPhotos";
 
         /// <summary>
@@ -22,11 +21,6 @@ namespace FaceApiSample.FunctionApp.Configs
         /// Gets or sets the blob container name.
         /// </summary>
         public virtual string Container { get; set; } = Environment.GetEnvironmentVariable(ContainerNameKey);
-
-        /// <summary>
-        /// Gets or sets the person group name.
-        /// </summary>
-        public virtual string PersonGroup { get; set; } = Environment.GetEnvironmentVariable(PersonGroupNameKey);
 
         /// <summary>
         /// Gets or sets the number of photos to check.

@@ -1,6 +1,7 @@
 using System;
 
 using FaceApiSample.FunctionApp.Configs;
+using FaceApiSample.FunctionApp.Handlers;
 using FaceApiSample.FunctionApp.Services;
 
 using Microsoft.Azure.CognitiveServices.Vision.Face;
@@ -30,6 +31,7 @@ namespace FaceApiSample.FunctionApp
             this.ConfigureStorage(builder.Services);
             this.ConfigureFaceClient(builder.Services);
             this.ConfigureServices(builder.Services);
+            this.ConfigureHandlers(builder.Services);
         }
 
         private void ConfigureAppSettings(IServiceCollection services)
@@ -69,6 +71,11 @@ namespace FaceApiSample.FunctionApp
         {
             services.AddTransient<IBlobService, BlobService>();
             services.AddTransient<IFaceService, FaceService>();
+        }
+
+        private void ConfigureHandlers(IServiceCollection services)
+        {
+            services.AddTransient<IEmbeddedRequestHandler, EmbeddedRequestHandler>();
         }
     }
 }

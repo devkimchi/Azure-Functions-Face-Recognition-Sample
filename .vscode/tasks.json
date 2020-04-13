@@ -48,7 +48,8 @@
                 "publish",
                 "--configuration",
                 "Release",
-                "/property:GenerateFullPaths=true",
+                "--output",
+                "${workspaceFolder}/src/FaceApiSample.FunctionApp/bin/Release/netcoreapp3.1/publish",
                 "/consoleloggerparameters:NoSummary"
             ],
             "type": "process",
