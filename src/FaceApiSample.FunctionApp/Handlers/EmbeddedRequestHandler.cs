@@ -2,9 +2,11 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 
+using FaceApiSample.FunctionApp.Models;
+
 using Microsoft.Extensions.Logging;
 
-using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace FaceApiSample.FunctionApp.Handlers
 {
@@ -82,19 +84,19 @@ namespace FaceApiSample.FunctionApp.Handlers
             }
 
             var payload = default(string);
-            var jo = default(JObject);
+            var request = default(EmbeddedRequest);
             using (var reader = new StreamReader(stream))
             {
                 payload = await reader.ReadToEndAsync().ConfigureAwait(false);
-                jo = JObject.Parse(payload);
+                request = JsonConvert.DeserializeObject<EmbeddedRequest>(payload);
             }
 
             this.RawData = payload;
 
-            var personGroup = jo["personGroup"].Value<string>();
+            var personGroup = request.PersonGroup;
             this.PersonGroup = personGroup;
 
-            var image = jo["image"].Value<string>();
+            var image = request.Image;
 
             var segments = image.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
             var contentType = segments[0].Split(new[] { ":", ";" }, StringSplitOptions.RemoveEmptyEntries)[1];
