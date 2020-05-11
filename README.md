@@ -8,9 +8,11 @@ This provides sample codes for face recognition using [Azure Functions](https://
 * 한국어
   * [[COVID-19 시리즈 #1] 애저 펑션을 이용해서 브라우저에서 애저 Blob 저장소로 스크린샷 이미지 저장하기](https://blog.aliencube.org/ko/2020/04/01/capturing-images-from-browser-to-azure-blob-storage-via-azure-functions/)
   * [[COVID-19 시리즈 #2] 애저 펑션과 안면 인식 API를 이용해서 본인 인증하기](https://blog.aliencube.org/ko/2020/04/08/identifying-faces-through-azure-functions-using-face-api/)
+  * [[COVID-19 시리즈 #3] 파워 앱과 얼굴 인식 API를 이용해서 출석 체크 앱 만들기](https://blog.aliencube.org/ko/2020/04/15/building-online-check-in-app-with-power-apps/)
 * English
   * [[COVID-19 Series #1] Capturing Face Images from Browser to Azure Blob Storage via Azure Functions](https://devkimchi.com/2020/04/01/capturing-images-from-browser-to-azure-blob-storage-via-azure-functions/)
   * [[COVID-19 Series #2] Identifying Students' Face with Azure Functions and Azure Face API](https://devkimchi.com/2020/04/08/identifying-faces-through-azure-functions-using-face-api/)
+  * [[COVID-19 Series #3] Building Students' Check-in App with Power Apps, Azure Functions and Azure Face API](https://devkimchi.com/2020/04/15/building-online-check-in-app-with-power-apps/)
 
 
 ## Prerequisites ##
