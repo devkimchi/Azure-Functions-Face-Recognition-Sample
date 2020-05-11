@@ -7,11 +7,11 @@ namespace FaceApiSample.FunctionApp.Configs
     /// </summary>
     public class TableSettings
     {
-        private const string TableNameKey = "Table__Name";
+        // private const string TableNameKey = "Table__Name";
 
         /// <summary>
         /// Gets or sets the table name.
         /// </summary>
-        public virtual string Name { get; set; } = Environment.GetEnvironmentVariable(TableNameKey);
+        public virtual string Name { get; set; }
     }
 }

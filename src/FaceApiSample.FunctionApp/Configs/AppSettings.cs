@@ -1,23 +1,34 @@
+using Aliencube.AzureFunctions.Extensions.Configuration.AppSettings.Extensions;
+using Aliencube.AzureFunctions.Extensions.OpenApi.Configurations;
+
 namespace FaceApiSample.FunctionApp.Configs
 {
     /// <summary>
     /// This represents the app settings entity.
     /// </summary>
-    public class AppSettings
+    public class AppSettings : OpenApiAppSettingsBase
     {
+        public AppSettings()
+            : base()
+        {
+            this.Blob = this.Config.Get<BlobSettings>("Blob");
+            this.Table = this.Config.Get<TableSettings>("Table");
+            this.Face = this.Config.Get<FaceSettings>("Face");
+        }
+
         /// <summary>
         /// Gets or sets the <see cref="BlobSettings"/> instance.
         /// </summary>
-        public virtual BlobSettings Blob { get; set; } = new BlobSettings();
+        public virtual BlobSettings Blob { get; }
 
         /// <summary>
         /// Gets or sets the <see cref="TableSettings"/> instance.
         /// </summary>
-        public virtual TableSettings Table { get; set; } = new TableSettings();
+        public virtual TableSettings Table { get; }
 
         /// <summary>
         /// Gets or sets the <see cref="FaceSettings"/> instance.
         /// </summary>
-        public virtual FaceSettings Face { get; set; } = new FaceSettings();
+        public virtual FaceSettings Face { get; }
     }
 }

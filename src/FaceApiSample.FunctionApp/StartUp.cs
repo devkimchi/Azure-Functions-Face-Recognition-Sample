@@ -1,5 +1,9 @@
 using System;
 
+using Aliencube.AzureFunctions.Extensions.OpenApi;
+using Aliencube.AzureFunctions.Extensions.OpenApi.Abstractions;
+using Aliencube.AzureFunctions.Extensions.OpenApi.Configurations;
+
 using FaceApiSample.FunctionApp.Configs;
 using FaceApiSample.FunctionApp.Handlers;
 using FaceApiSample.FunctionApp.Services;
@@ -32,13 +36,14 @@ namespace FaceApiSample.FunctionApp
             this.ConfigureFaceClient(builder.Services);
             this.ConfigureServices(builder.Services);
             this.ConfigureHandlers(builder.Services);
+            this.ConfigureOpenApi(builder.Services);
         }
 
         private void ConfigureAppSettings(IServiceCollection services)
         {
-            var settings = new AppSettings();
+            // var settings = new AppSettings();
 
-            services.AddSingleton<AppSettings>(settings);
+            services.AddSingleton<AppSettings>();
         }
 
         private void ConfigureHttpClient(IServiceCollection services)
@@ -76,6 +81,17 @@ namespace FaceApiSample.FunctionApp
         private void ConfigureHandlers(IServiceCollection services)
         {
             services.AddTransient<IEmbeddedRequestHandler, EmbeddedRequestHandler>();
+            services.AddTransient<IOpenApiDocumentHandler, OpenApiDocumentHandler>();
+        }
+
+        private void ConfigureOpenApi(IServiceCollection services)
+        {
+            services.AddSingleton<RouteConstraintFilter, RouteConstraintFilter>();
+
+            services.AddTransient<IDocumentHelper, DocumentHelper>();
+            services.AddTransient<IDocument, Document>();
+            services.AddTransient<ISwaggerUI, SwaggerUI>();
+
         }
     }
 }

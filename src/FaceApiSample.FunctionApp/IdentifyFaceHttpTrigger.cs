@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 
+using Aliencube.AzureFunctions.Extensions.OpenApi.Attributes;
+using Aliencube.AzureFunctions.Extensions.OpenApi.Enums;
+
 using FaceApiSample.FunctionApp.Configs;
 using FaceApiSample.FunctionApp.Extensions;
 using FaceApiSample.FunctionApp.Handlers;
@@ -52,8 +55,11 @@ namespace FaceApiSample.FunctionApp
         /// </summary>
         /// <param name="req"><see cref="HttpRequest"/> instance.</param>
         /// <returns>Returns the <see cref="IActionResult"/> instance.</returns>
-        [FunctionName("IdentifyFaceHttpTrigger")]
-        public async Task<IActionResult> Run(
+        [FunctionName(nameof(IdentifyFaceHttpTrigger.Identify))]
+        [OpenApiOperation(operationId: "Identify", tags: new[] { "identify" }, Summary = "Identify face", Description = "This operation identifies face taken from the app.", Visibility = OpenApiVisibilityType.Important)]
+        [OpenApiRequestBody(contentType: "application/json", bodyType: typeof(EmbeddedRequest), Description = "This defines the embedded image data with person group the image belongs.")]
+        [OpenApiResponseBody(statusCode: HttpStatusCode.OK, contentType: "application/json", bodyType: typeof(ResultResponse), Summary = "Face identification result", Description = "This defines the face identification result.")]
+        public async Task<IActionResult> Identify(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = "api/faces/identify")] HttpRequest req)
         {
             this._logger.LogInformation("C# HTTP trigger function processed a request.");

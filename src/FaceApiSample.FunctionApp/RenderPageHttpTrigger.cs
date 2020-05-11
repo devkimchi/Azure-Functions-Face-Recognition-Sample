@@ -1,9 +1,9 @@
 using System;
 using System.IO;
-
 using System.Text;
-
 using System.Threading.Tasks;
+
+using Aliencube.AzureFunctions.Extensions.OpenApi.Attributes;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -34,8 +34,9 @@ namespace FaceApiSample.FunctionApp
         /// </summary>
         /// <param name="req"><see cref="HttpRequest"/> instance.</param>
         /// <returns>Returns the <see cref="IActionResult"/> instance.</returns>
-        [FunctionName("RenderPageHttpTrigger")]
-        public async Task<IActionResult> Run(
+        [FunctionName(nameof(RenderPageHttpTrigger.RenderPage))]
+        [OpenApiIgnore()]
+        public async Task<IActionResult> RenderPage(
             [HttpTrigger(AuthorizationLevel.Function, "get", Route = "pages/capture")] HttpRequest req,
             ExecutionContext context)
         {
