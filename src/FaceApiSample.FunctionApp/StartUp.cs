@@ -1,9 +1,5 @@
 using System;
 
-using Aliencube.AzureFunctions.Extensions.OpenApi;
-using Aliencube.AzureFunctions.Extensions.OpenApi.Abstractions;
-using Aliencube.AzureFunctions.Extensions.OpenApi.Configurations;
-
 using FaceApiSample.FunctionApp.Configs;
 using FaceApiSample.FunctionApp.Handlers;
 using FaceApiSample.FunctionApp.Services;
@@ -36,7 +32,6 @@ namespace FaceApiSample.FunctionApp
             this.ConfigureFaceClient(builder.Services);
             this.ConfigureServices(builder.Services);
             this.ConfigureHandlers(builder.Services);
-            this.ConfigureOpenApi(builder.Services);
         }
 
         private void ConfigureAppSettings(IServiceCollection services)
@@ -64,12 +59,16 @@ namespace FaceApiSample.FunctionApp
 
         private void ConfigureFaceClient(IServiceCollection services)
         {
-            var authKey = Environment.GetEnvironmentVariable(FaceAuthKeyKey);
-            var endpoint = Environment.GetEnvironmentVariable(FaceEndpointKey);
-            var credentials = new ApiKeyServiceClientCredentials(authKey);
-            var face = new FaceClient(credentials) { Endpoint = endpoint };
+            services.AddSingleton<IFaceClient>(p => {
+                var settings = p.GetService<AppSettings>();
 
-            services.AddSingleton<IFaceClient>(face);
+                var authKey = settings.Face.AuthKey;
+                var endpoint = settings.Face.Endpoint;
+                var credentials = new ApiKeyServiceClientCredentials(authKey);
+                var face = new FaceClient(credentials) { Endpoint = endpoint };
+
+                return face;
+            });
         }
 
         private void ConfigureServices(IServiceCollection services)
@@ -82,16 +81,6 @@ namespace FaceApiSample.FunctionApp
         {
             services.AddTransient<IEmbeddedRequestHandler, EmbeddedRequestHandler>();
             services.AddTransient<IOpenApiDocumentHandler, OpenApiDocumentHandler>();
-        }
-
-        private void ConfigureOpenApi(IServiceCollection services)
-        {
-            services.AddSingleton<RouteConstraintFilter, RouteConstraintFilter>();
-
-            services.AddTransient<IDocumentHelper, DocumentHelper>();
-            services.AddTransient<IDocument, Document>();
-            services.AddTransient<ISwaggerUI, SwaggerUI>();
-
         }
     }
 }

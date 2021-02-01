@@ -1,5 +1,5 @@
-using Aliencube.AzureFunctions.Extensions.Configuration.AppSettings.Extensions;
-using Aliencube.AzureFunctions.Extensions.OpenApi.Configurations;
+using Microsoft.Azure.WebJobs.Extensions.OpenApi.Configuration.AppSettings.Extensions;
+using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Configurations;
 
 namespace FaceApiSample.FunctionApp.Configs
 {

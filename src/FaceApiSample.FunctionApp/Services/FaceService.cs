@@ -190,7 +190,7 @@ namespace FaceApiSample.FunctionApp.Services
                 return entity;
             }
 
-            var detected = faces.Select(p => p.FaceId.Value).ToList();
+            var detected = faces.Select(p => p.FaceId).ToList();
             var identified = await this._client
                                        .Face
                                        .IdentifyAsync(detected, entity.PersonGroupId)

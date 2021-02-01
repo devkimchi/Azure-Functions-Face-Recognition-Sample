@@ -1,5 +1,3 @@
-using System;
-
 namespace FaceApiSample.FunctionApp.Configs
 {
     /// <summary>
