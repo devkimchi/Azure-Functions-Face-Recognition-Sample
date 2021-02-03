@@ -17,6 +17,7 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Enums;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace FaceApiSample.FunctionApp
@@ -56,6 +57,7 @@ namespace FaceApiSample.FunctionApp
         /// <returns>Returns the <see cref="IActionResult"/> instance.</returns>
         [FunctionName(nameof(IdentifyFaceHttpTrigger.Identify))]
         [OpenApiOperation(operationId: "Identify", tags: new[] { "identify" }, Summary = "Identify face", Description = "This operation identifies face taken from the app.", Visibility = OpenApiVisibilityType.Important)]
+        [OpenApiSecurity("function_key", SecuritySchemeType.ApiKey, Name = "x-functions-key", In = OpenApiSecurityLocationType.Header)]
         [OpenApiRequestBody(contentType: "application/json", bodyType: typeof(EmbeddedRequest), Description = "This defines the embedded image data with person group the image belongs.")]
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "application/json", bodyType: typeof(ResultResponse), Summary = "Face identification result", Description = "This defines the face identification result.")]
         public async Task<IActionResult> Identify(
