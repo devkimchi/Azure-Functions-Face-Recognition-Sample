@@ -33,9 +33,9 @@ namespace FaceApiSample.FunctionApp
         /// </summary>
         /// <param name="req"><see cref="HttpRequest"/> instance.</param>
         /// <returns>Returns the <see cref="IActionResult"/> instance.</returns>
-        [FunctionName(nameof(RenderPageHttpTrigger.RenderPage))]
+        [FunctionName(nameof(RenderPageHttpTrigger.CaptureFace))]
         [OpenApiIgnore()]
-        public async Task<IActionResult> RenderPage(
+        public async Task<IActionResult> CaptureFace(
             [HttpTrigger(AuthorizationLevel.Function, "get", Route = "pages/capture")] HttpRequest req,
             ExecutionContext context)
         {
